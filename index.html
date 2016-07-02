@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SYJblog</title>
+        
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+</head>
+<body>
+<div class="navbar ">
+    <div class="container">
+        <div class="logo">
+
+                SYJblog
+
+        </div>
+        <input type="checkbox" id="idoc_nav" />
+        <div class="menu_tree">
+        <ul><li class="active"><a href="index.html">index</a></li><li><a href="html/前端请求数据.html">前端请求数据</a></li><li><a href="html/js中的继承.html">js中的继承</a></li><li><a href="html/node全局对象.html">node全局对象</a></li><li><a href="html/Vue和angular的一些区别.html">Vue和angular的一些区别</a></li></ul>    
+        </div>
+        
+        
+
+        <section class="idoc_nav_btn">
+            <label for="idoc_nav"><span></span></label>
+        </section>
+    </div>
+    
+</div>
+
+
+
+<div class="bs-docs-header">
+    <div class="container">
+        <h1>SYJblog</h1>
+
+        <p>孙勇健个人博客</p>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="page-toc">
+        <ul><li><a href="#t0idoc">简介</a><a href="#t1idoc">开篇</a></li></ul>
+    </div>
+    
+    <div class="content markdown-body">
+        <h1 id="t0idoc">简介 <a href="#t0idoc"> # </a></h1>
+        <div> 此博客将主要更新我在工作及自我学习中，总结一些遇到的问题和常见的知识点。主要涉及javascript、css3、移动端、nodejs、angular以及主流框架</div>
+        <h1 id="t1idoc">开篇 <a href="#t1idoc"> # </a></h1>
+        <div> 能在互联网上拥有一个真正属于自己的空间，是我的梦想，而今天这个梦想在“博客”中实现了。我怀着一颗好奇心，在博客上流连，申请了一方属于自己的免费空间，置身于梦幻秋天的背景下，设置自己喜欢的几个栏目，于是我便拥有了博客。当我第一次在博客中添加文章的时候，兴奋得无法入眠。我想：平素与网络无缘的我也终于拥有了一个网上家园。一个可以让我任意挥洒激情、记录人生轨迹的网上家园。感谢博客给我一块自由的空间，让我展翅飞翔！在与博客“亲密接触”的日子里，我深深地感觉到博客对教育的促进，对自身专业化成长的帮助。</div>
+
+        <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
+    </div>
+
+</div>
+
+<style>
+    .page-toc{
+        overflow: hidden;
+        position:fixed;
+        left:50%;
+        margin-left:250px;
+	width:350px
+    }
+    .page-toc > ul li{
+        list-style-position: inside;
+	line-height:120%
+    }
+    .page-toc > ul{
+        transition: all 0.2s;
+        position: relative;
+    }
+    .page-toc > ul a {
+	color:#009a61;
+	font-size:110% ! important;
+	line-height:120%
+    }
+    .page-toc > ul .red{
+        background: #f3f3f3;
+        z-index: 1;
+        border-left: 3px solid #009a61;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+	color:#000
+    }
+
+    .markdown-body{
+	font-size: 120% ! important;
+        max-width:800px;
+    }
+    .container{
+       font-size: 110% ! important;
+    }
+    html,body,.container{
+      font-family: Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif ! important;
+    }
+    .markdown-body pre code{
+        font-size: 20px;
+        line-height: 24px;
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+<script>
+
+var bar = $(window).height() - $('.navbar ').height() - $('.page-toc').position().top;
+var count =  bar/26/2;
+var barHeight = $('.page-toc').outerHeight();
+$('.page-toc li').eq(0).children('a').addClass('red');
+var arr = [];
+$("h2,h3").each(function () {
+    arr.push($(this).position().top);
+});
+if(!($(window).height()-50 > barHeight)){
+    var flagTop = true;
+}
+function dark(){
+    var top =  Math.abs($('.page-toc > ul').position().top);
+    var cur = $(document).scrollTop();
+    for(var i = arr.length; i >=0;i--){
+        if(arr[i]<=cur){
+            break;
+        }
+    }
+    if(i===-1){
+        i = 0;
+    }
+    $('.page-toc li a').removeClass('red');
+    $('.page-toc li').eq(i).children('a').addClass('red');
+    if(flagTop){
+      if(i> arr.length-count){
+          $(' .page-toc > ul').css('top',-(barHeight-bar));
+          return;
+      }
+      if(i>count){
+          $(' .page-toc > ul').css('top',-26*(i-count));
+      }else{
+          $(' .page-toc > ul').css('top',0);
+      }
+    }
+}
+$(window).on('scroll',dark);
+</script>
+</body>
+</html>

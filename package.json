@@ -1,0 +1,25 @@
+{
+    "name": "SYJblog",
+    "version": "0.0.1",
+    "description": "",
+    "keywords": [
+        ""
+    ],
+    "homepage": "http://JSLite.io",
+    "author": "sunyongjian <704928775@qq.com>",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "licenses": "MIT",
+    "idoc": {
+        "theme": "blog",
+        "md": [
+            "index.md",
+            "前端请求数据.md",
+            "js中的继承.md",
+            "node全局对象.md",
+            "Vue和angular的一些区别.md"
+        ]
+    }
+}
